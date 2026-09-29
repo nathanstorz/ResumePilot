@@ -1,16 +1,10 @@
 import os
-from pathlib import Path
-
 from dotenv import load_dotenv
 from openai import OpenAI
 from pydantic import BaseModel
 
-
-BASE_DIR = Path(__file__).resolve().parents[3]
-load_dotenv(BASE_DIR / ".env")
-
+load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
 
 class ResumeAnalysis(BaseModel):
     match_score: int
