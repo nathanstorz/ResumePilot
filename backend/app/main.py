@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from app.services.llm_service import analyze_resume
 from app.services.job_parser import extract_job_page
 from app.prompts import build_resume_analysis_prompt
+from app.database import find_analysis
 import tempfile
 
 

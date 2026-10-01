@@ -5,3 +5,20 @@ services:
       - "8000:8000"
     env_file:
       - ../.env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: resumepilot
+      POSTGRES_USER: resumepilot
+      POSTGRES_PASSWORD: resumepilotpassword
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resumepilot -d resumepilot"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

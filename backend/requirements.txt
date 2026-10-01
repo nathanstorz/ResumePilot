@@ -8,3 +8,4 @@ requests
 playwright
 python-multipart
 pydantic
+psycopg[binary]
